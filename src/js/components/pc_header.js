@@ -53,7 +53,11 @@ class PCHeader extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     var myFetchOptions = {
-      method: 'GET'
+      method: 'GET',
+      mode: "cors",
+      headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+      }
     }
     var formData = this.props.form.getFieldsValue();
     console.log(formData);
@@ -105,7 +109,7 @@ class PCHeader extends React.Component {
     const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
     const userShow = this.state.hasLogined
       ? <Menu.Item key="logout" class="register logined">
-          <Button type="primary" htmlType="button" class="floatleft">{this.state.userNickName.substring(0,3)}</Button>
+          <Button type="primary" htmlType="button" class="floatleft">{this.state.userNickName}</Button>
           &nbsp;&nbsp;
           <Link target="_blank" class="floatleft" to={`/usercenter`}>
             <Button type="dashed" htmlType="button">个人中心</Button>

@@ -56,7 +56,11 @@ class MobileHeader extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     var myFetchOptions = {
-      method: 'GET'
+      method: 'GET',
+      mode: "cors",
+      headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+      }
     }
     var formData = this.props.form.getFieldsValue();
     console.log(formData);

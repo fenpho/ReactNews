@@ -29,8 +29,12 @@ class CommonComments extends React.Component {
   }
   componentDidMount() {
     var myFetchOptions = {
-      method: 'GET'
-    };
+      method: 'GET',
+      mode: "cors",
+      headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+      }
+    }
     fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey=" + this.props.uniquekey, myFetchOptions).then(response => response.json()).then(json => {
       this.setState({comments: json});
     })
@@ -38,7 +42,11 @@ class CommonComments extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     var myFetchOptions = {
-      method: 'GET'
+      method: 'GET',
+      mode: "cors",
+      headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+      }
     }
     var formdata = this.props.form.getFieldsValue();
     fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid="+ localStorage.userid+"&uniquekey="+this.props.uniquekey+"&commnet=" + formdata.remark, myFetchOptions).then(response => response.json()).then(json => {
@@ -46,8 +54,12 @@ class CommonComments extends React.Component {
     })
   }
   addUserCollection(){
-    var myfetchOption = {
-      method: 'GET'
+    var myFetchOptions = {
+      method: 'GET',
+      mode: "cors",
+      headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+      }
     }
     fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid="+localStorage.userid+"&uniquekey="+ this.props.uniquekey, myfetchOption).then(response=>response.json()).then(json=>{
       //collect success

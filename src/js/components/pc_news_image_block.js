@@ -11,7 +11,11 @@ export default class PCNewsImageBlock extends React.Component{
   }
   componentWillMount(){
     var myFetchOptions = {
-      method: 'GET'
+      method: 'GET',
+      mode: "cors",
+      headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+      }
     }
     fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type="+this.props.type+"&count="+this.props.count, myFetchOptions).then(response=>response.json()).then(json=>this.setState({news: json}));
   }
